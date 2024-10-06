@@ -21,9 +21,7 @@ export default function Cart() {
           </button>
         </div>
 
-        <strong className="float-right">
-          Subtotal: R$ 1.000
-        </strong>
+        <strong className="float-right">Subtotal: R$ 1.000</strong>
       </section>
 
       <p className="font-bold mt-4">Total: R$ 1.000</p>
