@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useState } from "react";
-import { ProductsProps } from "../pages/home";
+import { ProductProps } from "../pages/home";
 
 interface CartContextData {
   cart: CartProps[];
   cartAmount: number;
-  addItemCart: (newItem: ProductsProps) => void;
+  addItemCart: (newItem: ProductProps) => void;
   removeItemCart: (product: CartProps) => void;
   total: string;
 }
@@ -28,7 +28,7 @@ function CartProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useState<CartProps[]>([]);
   const [total, setTotal] = useState("");
 
-  function addItemCart(newItem: ProductsProps) {
+  function addItemCart(newItem: ProductProps) {
     const indexItem = cart.findIndex((item) => item.id === newItem.id);
 
     if (indexItem !== -1) {
