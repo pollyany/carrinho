@@ -3,7 +3,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { cart } = useContext(CartContext);
+  const { cart, total, addItemCart, removeItemCart } = useContext(CartContext);
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -29,23 +29,32 @@ export default function Cart() {
           <strong>Preço: {item.price}</strong>
 
           <div className="flex items-center justify-center gap-3">
-            <button className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center">
+            <button
+              className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
+              onClick={() => removeItemCart(item)}
+            >
               -
             </button>
             {item.amount}
-            <button className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center">
+            <button
+              className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center"
+              onClick={() => addItemCart(item)}
+            >
               +
             </button>
           </div>
 
-          <strong className="float-right">Subtotal: {item.total.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-          })}</strong>
+          <strong className="float-right">
+            Subtotal:{" "}
+            {item.total.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </strong>
         </section>
       ))}
 
-      {cart.length !== 0 && <p className="font-bold mt-4">Total: </p>}
+      {cart.length !== 0 && <p className="font-bold mt-4">Total: {total}</p>}
     </div>
   );
 }
